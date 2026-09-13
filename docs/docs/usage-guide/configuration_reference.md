@@ -401,7 +401,7 @@ _This section only documents commented-out examples; see the [TOML source](https
 | Key | Default | Description |
 | --- | --- | --- |
 | `jira_requirements_field` | "" | Custom field id holding acceptance criteria / requirements, mapped to the ticket "requirements" section. Instance-specific (e.g. "customfield_10127"); empty disables it. |
-| `jira_project_keys` | [] | Jira project-key prefixes to accept (e.g. ["PROJ", "ENG"]). Key-shaped matches whose prefix isn't in this list (e.g. "SHA-256", "UTF-8") are skipped before any API lookup. Empty list (default) keeps current behavior: every regex match is looked up. |
+| `project_keys` | [] | Optional allowlist of Jira project keys, e.g. ["PROJ", "OPS"]. When non-empty, key-shaped text with another prefix ("SHA-256", "UTF-8", "ISO-8601") is dropped before any lookup, so it no longer costs an authenticated 404 each. Entries must be plain upper-case keys; a supplied list with no valid entry disables the lookup rather than widening it. Empty (default) looks up every key found. |
 
 
 ## `[litellm]`
